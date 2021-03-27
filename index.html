@@ -25,7 +25,20 @@
 
 
   <!-- EXTERNAL CSS -->
-  <link rel="stylesheet" type="text/css" href="C:\Users\prasa\OneDrive\Desktop\website project cyb labs\style.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <!--  firebase configuration -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script> -->
+  <!-- add firebase auth -->
+
+
+
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+
+
 
 
 
@@ -73,7 +86,7 @@
 
         </ul>
 
-     
+
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="icon"><i class="fa fa-search" style="padding: 6px;"></i></button>
@@ -85,28 +98,30 @@
         </ul>
 
         <div class="mx-2">
-          <button type="button" class="nav-key btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#signinModal">Sign
+          <button type="button" class="nav-key btn btn-primary mx-1" data-bs-toggle="modal"
+            data-bs-target="#signinModal">Sign
             in</button>
-          <button type="button" class="nav-key btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupModal">Sign
+          <button type="button" class="nav-key btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#signupModal">Sign
             Up</button>
         </div>
-      
-            <!-- dashboard -->
-            <li class="dropdown nav-item">
-              <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
-               data-bs-toggle="dropdown" aria-expanded="false">
-                <div class="usericon">
-                  <i class="fas fa-user-circle"></i>
-                </div>
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li class="nav-link"><a href="#" class="nav-item dropdown-item">Profile</a></li>
-                <li class="nav-link"><a href="#" class="nav-item dropdown-item">Categorised video</a></li>
-                <li class="dropdown-divider"></li>
-                <li class="nav-link"><a href="#" class="nav-item dropdown-item">Log out</a></li>
-              </ul>
-            </li>
-       
+
+        <!-- dashboard -->
+        <li class="dropdown nav-item">
+          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="usericon">
+              <i class="fas fa-user-circle"></i>
+            </div>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li class="nav-link"><a href="#" class="nav-item dropdown-item">Profile</a></li>
+            <li class="nav-link"><a href="#" class="nav-item dropdown-item">Categorised video</a></li>
+            <li class="dropdown-divider"></li>
+            <li class="nav-link"><a href="#" class="nav-item dropdown-item">Log out</a></li>
+          </ul>
+        </li>
+
 
 
       </div>
@@ -127,7 +142,8 @@
 
         </div>
         <div class="modal-body">
-          <form>
+          <form id="signinForm">
+
             <div class="mb-3">
               <label for="signinInputEmail1" class="form-label">Email address</label>
               <input type="email" class="form-control" id="signinInputEmail1" aria-describedby="emailHelp">
@@ -138,10 +154,10 @@
               <input type="password" class="form-control" id="signinInputPassword1">
             </div>
 
-            <div class="mb-3 form-check">
+            <!-- <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="signinCheck1">
               <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
+            </div> -->
             <button type="submit" class="btn btn-primary">Sign In</button>
           </form>
         </div>
@@ -162,7 +178,8 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form id="signupForm">
+
             <div class="mb-3">
               <label for="signupInputEmail1" class="form-label">Email address</label>
               <input type="email" class="form-control" id="signupInputEmail1" aria-describedby="emailHelp">
@@ -173,21 +190,23 @@
               <input type="password" class="form-control" id="signupInputPassword1">
             </div>
 
-            <div class="mb-3">
+            <!-- <div class="mb-3">
               <label for="signupInputCPassword1" class="form-label">Confirm password</label>
               <input type="password" class="form-control" id="signupInputCPassword1">
-            </div>
+            </div> -->
 
-            <div class="mb-3 form-check">
+            <!-- <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="signupCheck1">
               <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
+            </div> -->
+
+            <button type="submit" class="btn btn-primary">Sign Up</button>
 
           </form>
         </div>
         <div class="modal-footer">
 
-          <button type="submit" class="btn btn-primary">Create account</button>
+          <!-- <button onclick="sign_up()" type="submit" class="btn btn-primary">Create account</button> -->
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
         </div>
@@ -211,22 +230,29 @@
     <h1>About</h1>
     <p>
       This is a video content website where,
-       you can connect those with its transcript.
-       Do register and save your favourite Categorised 
-       videos.
+      you can connect those with its transcript.
+      Do register and save your favourite Categorised
+      videos.
     </p>
 
     <h2>Follow Me On Social Media</h2>
 
     <div class="social">
-    <a href="https://twitter.com/BalbirKumaar" target="_blank"><i class="fab fa-twitter fa-3x"></i></a>
-      <a href="https://www.facebook.com/profile.php?id=100056387470011" target="_blank"><i class="fab fa-facebook fa-3x"></i></a>
+      <a href="https://twitter.com/BalbirKumaar" target="_blank"><i class="fab fa-twitter fa-3x"></i></a>
+      <a href="https://www.facebook.com/profile.php?id=100056387470011" target="_blank"><i
+          class="fab fa-facebook fa-3x"></i></a>
       <a href="https://github.com/KumaarBalbir" target="_blank"><i class="fab fa-github fa-3x"></i></a>
-      <a href="https://www.linkedin.com/in/balbir-prasad-362aa2121/" target="_blank"><i class="fab fa-linkedin fa-3x"></i></a>
+      <a href="https://www.linkedin.com/in/balbir-prasad-362aa2121/" target="_blank"><i
+          class="fab fa-linkedin fa-3x"></i></a>
     </div>
   </section>
 
-
+  <!-- firebase configuration -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+  <script src="app.js"></script>
 </body>
 
 
