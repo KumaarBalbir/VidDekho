@@ -29,14 +29,19 @@
 
   <!--  firebase configuration -->
   <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <!-- <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script> -->
-  <!-- add firebase auth -->
-
-
-
-
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
   <!-- TODO: Add SDKs for Firebase products that you want to use
       https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <!-- add firebase auth -->
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+
+
+
+
+
+
 
 
 
@@ -108,11 +113,9 @@
 
         <!-- dashboard -->
         <li class="dropdown nav-item">
-          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            <div class="usericon">
-              <i class="fas fa-user-circle"></i>
-            </div>
+          <a class="nav-key btn btn-primary mx-1" href="#" id="" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Account
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li class="nav-link"><a href="#" class="nav-item dropdown-item">Profile</a></li>
@@ -247,11 +250,8 @@
     </div>
   </section>
 
-  <!-- firebase configuration -->
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+
+  <script src="auth.js"></script>
   <script src="app.js"></script>
 </body>
 
