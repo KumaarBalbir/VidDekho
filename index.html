@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>video searching website</title>
 
 
@@ -33,17 +36,9 @@
   <!-- TODO: Add SDKs for Firebase products that you want to use
       https://firebase.google.com/docs/web/setup#available-libraries -->
 
-  <!-- add firebase auth -->
+  <!-- add firebase auth and  firestore -->
   <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
-
-
-
-
-
-
-
-
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
 
 
 
@@ -103,25 +98,25 @@
         </ul>
 
         <div class="mx-2">
-          <button type="button" class="nav-key btn btn-primary mx-1" data-bs-toggle="modal"
-            data-bs-target="#signinModal">Sign
-            in</button>
-          <button type="button" class="nav-key btn btn-primary" data-bs-toggle="modal"
-            data-bs-target="#signupModal">Sign
-            Up</button>
+          <button type="button" class="nav-key btn btn-primary mx-1 logged-out" style="display: none;"
+            data-bs-toggle="modal" data-bs-target="#signinModal">Sign in</button>
+          <button type="button" class="nav-key btn btn-primary logged-out" style="display: none;" data-bs-toggle="modal"
+            data-bs-target="#signupModal">Sign Up</button>
         </div>
 
         <!-- dashboard -->
-        <li class="dropdown nav-item">
+        <li class="dropdown nav-item logged-in" style="display: none;">
           <a class="nav-key btn btn-primary mx-1" href="#" id="" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
             Account
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li class="nav-link"><a href="#" class="nav-item dropdown-item">Profile</a></li>
-            <li class="nav-link"><a href="#" class="nav-item dropdown-item">Categorised video</a></li>
+            <li class="nav-link"><a href="categoryVid.html" class="nav-item dropdown-item">Categorised Videos</a></li>
+
+
             <li class="dropdown-divider"></li>
-            <li class="nav-link"><a href="#" class="nav-item dropdown-item">Log out</a></li>
+            <li id="logout" class="nav-link"><a href="#" class="nav-item dropdown-item">Log out</a></li>
           </ul>
         </li>
 
@@ -145,7 +140,7 @@
 
         </div>
         <div class="modal-body">
-          <form id="signinForm">
+          <form id="loginForm">
 
             <div class="mb-3">
               <label for="signinInputEmail1" class="form-label">Email address</label>
@@ -162,6 +157,7 @@
               <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div> -->
             <button type="submit" class="btn btn-primary">Sign In</button>
+            <button onclick="loginWithGoogle()" type="submit" class="btn btn-primary">Sign in with Google?</button>
           </form>
         </div>
         <div class="modal-footer">
@@ -203,7 +199,9 @@
               <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div> -->
 
-            <button type="submit" class="btn btn-primary">Sign Up</button>
+            <button type="submit" class="btn btn-primary" data-dismiss="modal">Sign Up</button>
+            <button onclick="loginWithGoogle()" type="submit" class="btn btn-primary" data-dismiss="modal">Sign up with
+              Google?</button>
 
           </form>
         </div>
@@ -216,6 +214,10 @@
       </div>
     </div>
   </div>
+
+
+  <!-- TOAST TEMPLATE -->
+
 
 
   <section class="showcase">
@@ -251,8 +253,10 @@
   </section>
 
 
+
+
   <script src="auth.js"></script>
-  <script src="app.js"></script>
+
 </body>
 
 
