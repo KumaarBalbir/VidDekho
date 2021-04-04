@@ -90,7 +90,7 @@
       }).catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
-        console.log(errorMessage);
+        window.alert(errorMessage);
     });
   });
 
@@ -149,7 +149,7 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
       var errorMessage = error.message;
 		
       console.log(error.code)
-      console.log(error.message)
+      window.alert(error.message);
    });
         
   

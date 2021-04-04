@@ -7,7 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>video searching website</title>
 
-
+  <!-- ajax cdn css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
   <!-- BOOTSTRAP CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -39,7 +40,16 @@
   <!-- add firebase auth and  firestore -->
   <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+  <!-- internal css for YT video list-->
+  <style>
+    .paginate {
+      margin-right: 5px;
+    }
 
+    li {
+      display: inline-block;
+    }
+  </style>
 
 
 
@@ -87,15 +97,36 @@
         </ul>
 
 
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="icon"><i class="fa fa-search" style="padding: 6px;"></i></button>
+
+        <form class="d-flex" id="yt-form">
+          <!-- <div id="output" class="hide"></div> -->
+          <div id="searchbar" class="searchBar">
+            <input id="keyword-input" class="form-control me-2" type="text" placeholder="Search" aria-label="Search"
+              required>
+
+            <span onclick="runSpeechRecognition()" id="action" class="fas fa-microphone"></span>
+
+          </div>
+
+
+          <input type="number" id="maxresult-input" placeholder="Max-Results" min="1" max="50" required>
+          <select id="order-input" required>
+            <option value="">--SELECT ORDER--</option>
+            <option value="date">Date</option>
+            <option value="rating">Rating</option>
+            <option value="relevance">Relevance</option>
+            <option value="title">Title</option>
+            <option value="viewCount" selected>View Count</option>
+          </select>
+          <button type="submit" class="icon"><i class="fa fa-search" style="padding: 6px;"></i></button>
           <!-- <button class="btn btn-outline-light" type="submit">Search</button> -->
         </form>
 
-        <ul class="dropdown-menu">
 
-        </ul>
+
+        <!-- <ul class="dropdown-menu">
+
+        </ul> -->
 
         <div class="mx-2">
           <button type="button" class="nav-key btn btn-primary mx-1 logged-out" style="display: none;"
@@ -124,7 +155,10 @@
 
       </div>
     </div>
+
   </nav>
+
+
   <!-- Button trigger modal -->
   <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Launch demo modal
@@ -216,7 +250,7 @@
   </div>
 
 
-  <!-- TOAST TEMPLATE -->
+
 
 
 
@@ -230,6 +264,9 @@
       <!-- <a href="#about" class="btn">Read More</a> -->
     </div>
   </section>
+
+  <!-- YT Video div container -->
+  <div id="videoListContainer" style="z-index: 3;"></div>
 
   <section id="about">
     <h1>About</h1>
@@ -251,10 +288,20 @@
           class="fab fa-linkedin fa-3x"></i></a>
     </div>
   </section>
+  <div>
 
 
+  </div>
 
-
+  <!-- yt search api and script -->
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <script src="js/custom.js"></script>
+  <!-- mic script -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="mic.js"></script>
+  <!-- auth script -->
   <script src="auth.js"></script>
 
 </body>

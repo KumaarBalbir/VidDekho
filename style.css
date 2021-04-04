@@ -207,3 +207,17 @@ h1 {
 .social a {
   margin: 0 5px;
 }
+.fa-microphone {
+  color: rgb(14, 13, 13);
+
+  position: absolute;
+  margin-left: 88%;
+  padding-top: 4%;
+}
+#output {
+  color: #fff;
+}
+#searchbar {
+  display: inline-flex;
+  position: relative;
+}
