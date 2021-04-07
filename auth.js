@@ -91,7 +91,7 @@
       }).catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
-        console.log(errorMessage);
+        window.alert(errorMessage);
     });
   });
 
@@ -119,7 +119,17 @@
      auth.signInWithEmailAndPassword(email,password).then(cred=>{
      
        //close the signin modal and reset the form..write code here
+      
+      
+      
        window.alert("you are logged in!");
+      
+      
+
+
+
+       document.getElementById('signinInputEmail1').value='';
+       document.getElementById('signinInputPassword1').value='';
        
        window.location.replace("index.html");
 
@@ -129,12 +139,14 @@
       var errorMessage = error.message;
       window.alert(errorMessage);
     });
+  
+
    });
    
 
 
 
-   //login with google
+   //login with google , possible when site is locally hosted!
     
 
 function loginWithGoogle() {
@@ -150,7 +162,7 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
       var errorMessage = error.message;
 		
       console.log(error.code)
-      console.log(error.message)
+      window.alert(error.message);
    });
         
   

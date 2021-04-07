@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact us</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <!-- BOOTSTRAP CSS AND JS -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
@@ -14,22 +17,29 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
         integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
         crossorigin="anonymous"></script>
+
+    <!-- external css -->
+    <link rel="stylesheet" href="contactStyle.css">
+    <!-- js  -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
 </head>
 
 <body>
     <div class="container my-4">
         <h2>Contact us</h2>
-        <form>
+        <form id="contact-form">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Email address</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                <input type="email" class="form-control" id="emailinput" placeholder="name@example.com">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Select your Query</label>
                 <select class="form-control" id="exampleFormControlSelect1">
                     <option>privacy and policy</option>
                     <option>collaborate</option>
-                    <option>Copyrights</option>
+                    <option>feedback</option>
+                    <option>complaint</option>
+
 
                 </select>
 
@@ -50,10 +60,12 @@
                 <label for="exampleFormControlTextarea1">Write your concern here</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-            <button class="btn btn-primary">Submit</button>
+            <a class="btn btn-dark btn-outline-light" href="mailto:prasadbalbir1056@gmail.com">Submit</a>
+
         </form>
 
     </div>
+    <script src="contact.js"></script>
 </body>
 
 </html>

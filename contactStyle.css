@@ -1,0 +1,16 @@
+body {
+  background-color: rgb(180, 245, 222);
+}
+h2 {
+  padding: 2% 10% 0 2%;
+  width: 80%;
+}
+form {
+  width: 80%;
+}
+.form-group {
+  padding: 2%;
+}
+.btn {
+  margin: 1% 2% 1% 2%;
+}

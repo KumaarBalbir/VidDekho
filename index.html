@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>video searching website</title>
+  <title>VidDekho</title>
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
 
+  <!-- ajax cdn css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 
-  <!-- BOOTSTRAP CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
   <!-- FONTAWESOME -->
   <script src="https://kit.fontawesome.com/10de82da06.js" crossorigin="anonymous"></script>
@@ -18,14 +18,11 @@
   <!-- GOOGLE FONTS -->
   <link href="https://fonts.googleapis.com/css2?family=Redressed&display=swap" rel="stylesheet">
 
-  <!-- BOOTSTRAP JS -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
-    integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
-    integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
-    crossorigin="anonymous"></script>
 
+
+  <!-- BOOTSTRAP CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
   <!-- EXTERNAL CSS -->
   <link rel="stylesheet" type="text/css" href="style.css">
@@ -42,8 +39,6 @@
 
 
 
-
-
 </head>
 
 <body>
@@ -57,10 +52,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
           </li>
-
-          <li class="nav-item dropdown">
+          <!-- dropdown menu commented, not needed-->
+          <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
               data-bs-toggle="dropdown" aria-expanded="false">
               Theme
@@ -75,27 +70,48 @@
               </li>
               <li><a class="dropdown-item" href="#">Others</a></li>
             </ul>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link active" href="contact.html">Contact</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="about.html">about</a>
+            <a class="nav-link active" href="about.html">Service</a>
           </li>
 
 
         </ul>
 
 
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="icon"><i class="fa fa-search" style="padding: 6px;"></i></button>
+
+        <form class="d-flex" id="yt-form">
+          <!-- <div id="output" class="hide"></div> -->
+          <div id="searchbar" class="searchBar">
+            <input id="keyword-input" class="form-control me-2" type="text" placeholder="Search" aria-label="Search"
+              required>
+
+            <span onclick="runSpeechRecognition()" id="action" class="fas fa-microphone"></span>
+
+          </div>
+
+
+          <input type="number" id="maxresult-input" placeholder="Max-Results" min="1" max="50" required>
+          <select id="order-input" required>
+            <option value="">--SELECT ORDER--</option>
+            <option value="date">Date</option>
+            <option value="rating">Rating</option>
+            <option value="relevance">Relevance</option>
+            <option value="title">Title</option>
+            <option value="viewCount" selected>View Count</option>
+          </select>
+          <button onclick="showdiv()" type="submit" class="icon"><i class="fa fa-search"></i></button>
           <!-- <button class="btn btn-outline-light" type="submit">Search</button> -->
         </form>
 
-        <ul class="dropdown-menu">
 
-        </ul>
+
+        <!-- <ul class="dropdown-menu">
+
+        </ul> -->
 
         <div class="mx-2">
           <button type="button" class="nav-key btn btn-primary mx-1 logged-out" style="display: none;"
@@ -110,8 +126,8 @@
             aria-expanded="false">
             Account
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li class="nav-link"><a href="#" class="nav-item dropdown-item">Profile</a></li>
+          <ul class="dropdown-menu User-account" aria-labelledby="navbarDropdown">
+
             <li class="nav-link"><a href="categoryVid.html" class="nav-item dropdown-item">Categorised Videos</a></li>
 
 
@@ -124,7 +140,10 @@
 
       </div>
     </div>
+
   </nav>
+
+
   <!-- Button trigger modal -->
   <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Launch demo modal
@@ -215,29 +234,56 @@
     </div>
   </div>
 
+  <!-- toastalert for mic on html -->
+  <form>
+    <div class="mb-3">
+      <label for="selectToastPlacement">Toast placement</label>
 
-  <!-- TOAST TEMPLATE -->
+    </div>
+  </form>
+  <div aria-live="polite" aria-atomic="true" class="bg-dark position-relative bd-example-toasts">
+    <div class="toast-container position-absolute p-3" id="toastPlacement">
+      <div id="toastalert1" class="toast" style="z-index: 6;">
+        <div class="toast-header">
+          <img src="favicon.png" width="30px" height="30px" class="rounded me-2" alt="VidDekho_logo">
+          <strong class="me-auto">VidDekho</strong>
+          <small>Notifies you!</small>
+        </div>
+        <div class="toast-body">
+          mic starts!
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 
 
   <section class="showcase">
+
     <div class="video-container">
       <video src="bg-video.mp4" autoplay muted loop></video>
     </div>
     <div class="content">
       <h1>Connect to your favourite videos!</h1>
       <h3>Enjoy your today.</h3>
-      <!-- <a href="#about" class="btn">Read More</a> -->
+
     </div>
   </section>
+
+
+
+  <!-- YT Video div container -->
+  <div id="videoListContainer" style="z-index: 3;"></div>
 
   <section id="about">
     <h1>About</h1>
     <p>
-      This is a video content website where,
-      you can connect those with its transcript.
-      Do register and save your favourite Categorised
-      videos.
+      VidDekho, the remarkable, beautifully-made new product,
+      is here to keep you glued to your seat.
+      Explore the site to watch exclusive clips and save it's link.
+
+      Do register and explore yourself.
     </p>
 
     <h2>Follow Me On Social Media</h2>
@@ -250,11 +296,31 @@
       <a href="https://www.linkedin.com/in/balbir-prasad-362aa2121/" target="_blank"><i
           class="fab fa-linkedin fa-3x"></i></a>
     </div>
+    <footer>&copy; Copyright 2021 VidDekho</footer>
   </section>
+  <div>
 
 
+  </div>
+
+  <!-- BOOTSTRAP JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
+    integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
+    integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
+    crossorigin="anonymous"></script>
 
 
+  <!-- yt search api and script -->
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <script src="custom.js"></script>
+  <!-- mic script -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="mic.js"></script>
+  <!-- auth script -->
   <script src="auth.js"></script>
 
 </body>
