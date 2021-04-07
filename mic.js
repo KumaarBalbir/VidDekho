@@ -11,12 +11,33 @@
       
           // This runs when the speech recognition service starts
           recognition.onstart = function() {
-              alert("mic started");
+           
+           
+           
+            $(function() {
+
+              $('.toast').toast('show');
+      
+          });
+          
+
+           
+              
           };
           
           recognition.onspeechend = function() {
-              alert("mic stopped");
+              
+            $(function() {
+
+            alert("mic stops!");
+
+           
+
+      
+          });
+
               recognition.stop();
+            
           }
         
           // This runs when the speech recognition service returns result

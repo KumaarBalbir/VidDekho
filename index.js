@@ -78,10 +78,12 @@ db.collection('categorised').orderBy('genre').onSnapshot(snapshot=>{
     {renderlink(change.doc);}
     else if(change.type=='removed')
     {
-      let li=linkList.querySelector("[data-id=' + change.doc.id + ']"); 
+      let li=document.getElementById("[data-id=' + change.doc.id + ' ]");
+     
         
         linkList.removeChild(li);   
-        
+      
               }
   })
 })
+

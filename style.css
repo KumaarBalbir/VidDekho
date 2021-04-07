@@ -78,8 +78,9 @@ color: #fff;
   }
 }
 .navbar {
-  z-index: 2;
-  position: relative;
+  z-index: 4;
+  width: 100%;
+  position: fixed;
 }
 .nav-key {
   border-radius: 10px;
@@ -187,7 +188,7 @@ h1 {
 
 #about p {
   font-size: 1.2rem;
-  max-width: 600px;
+  max-width: 50%;
   margin: auto;
 }
 
@@ -197,22 +198,26 @@ h1 {
   padding-left: 35%;
 }
 #about h1 {
-  padding-left: 40%;
+  padding-left: 44%;
+  padding-top: 4%;
 }
 .social {
   padding-left: 38%;
-  padding-bottom: 2%;
+  padding-right: 5%;
+  padding-bottom: 5%;
 }
 
 .social a {
   margin: 0 5px;
+  padding-bottom: 5%;
 }
 .fa-microphone {
   color: rgb(14, 13, 13);
 
   position: absolute;
-  margin-left: 88%;
-  padding-top: 4%;
+  margin-left: 83%;
+  margin-top: 2%;
+  padding-top: 5%;
 }
 #output {
   color: #fff;
@@ -220,4 +225,50 @@ h1 {
 #searchbar {
   display: inline-flex;
   position: relative;
+}
+#maxresult-input {
+  border-radius: 5%;
+  padding-left: 2%;
+  padding-right: 1%;
+  margin-right: 1%;
+}
+#order-input {
+  border-radius: 5%;
+  margin-right: 1%;
+}
+.icon {
+  padding: 1.5%;
+}
+
+/* youtube video list css */
+#videoListContainer {
+  background-color: #f0fff0;
+}
+
+#videoListContainer h4 {
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+  margin-bottom: 1%;
+  padding-top: 1%;
+}
+#videoListContainer li {
+  text-align: center;
+  padding: 2%;
+
+  display: inline-block;
+}
+
+a .paginate {
+  text-align: center;
+  font-size: 1rem;
+}
+#toastalert1 {
+  position: relative;
+}
+.User-account {
+  position: relative;
+}
+footer {
+  padding-left: 40%;
+  padding-bottom: 3%;
 }

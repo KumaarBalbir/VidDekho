@@ -118,7 +118,17 @@
      auth.signInWithEmailAndPassword(email,password).then(cred=>{
      
        //close the signin modal and reset the form..write code here
+      
+      
+      
        window.alert("you are logged in!");
+      
+      
+
+
+
+       document.getElementById('signinInputEmail1').value='';
+       document.getElementById('signinInputPassword1').value='';
        
        window.location.replace("index.html");
 
@@ -128,12 +138,14 @@
       var errorMessage = error.message;
       window.alert(errorMessage);
     });
+  
+
    });
    
 
 
 
-   //login with google
+   //login with google , possible when site is locally hosted!
     
 
 function loginWithGoogle() {

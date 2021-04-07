@@ -3,7 +3,7 @@ gapi.load("client", loadClient);
 function loadClient() {
     gapi.client.setApiKey("AIzaSyBjQ3LtHhRympRo3zPQcMSkevCmbQvPvi0");
     return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
-        .then(function() { console.log("GAPI client loaded for API"); },
+        .then(function() { console.log("GAPI loaded successfully!");  },
                 function(err) { console.error("Error loading GAPI client for API", err); });
 }
 
@@ -50,7 +50,7 @@ function execute() {
         // Handle the results here (response.result has the parsed body).
         const listItems = response.result.items;
         if (listItems) {
-            let output = '<h4>Videos</h4><ul>';
+            let output = '<h4>Your searched videos results</h4><ul>';
   
             listItems.forEach(item => {
                 const videoId = item.id.videoId;
@@ -73,5 +73,9 @@ function execute() {
             videoList.innerHTML = output;
         }
     },
-    function(err) { console.error("Execute error", err); });
+    function(err) { console.error("Executed error", err); });
+}
+
+function showdiv() {
+    setTimeout("window.scrollBy(0,3000);",10);
 }
